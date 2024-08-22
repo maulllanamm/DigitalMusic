@@ -42,6 +42,11 @@ namespace DigitalMusic.Application
             CreateMap<Album, GetByIdAlbumResponse>();
             
             CreateMap<Album, GetAllAlbumResponse>();
+            
+            CreateMap<UpdateAlbumRequest, Album>();
+            CreateMap<Album, UpdateAlbumResponse>();
+            
+            
         }
     }
 }

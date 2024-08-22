@@ -7,5 +7,6 @@ namespace DigitalMusic.Application.Repositories
         public Task<List<Album>> GetAll();
         public Task<Album> GetById(Guid id);
         public Task<Album> Create(Album album);
+        public Task<Album> Update(Album album);
     }
 }

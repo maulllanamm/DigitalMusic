@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using DigitalMusic.Application.Common.Exceptions;
 using DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum;
+using DigitalMusic.Application.Features.UserFeatures.Command.UpdateUser;
 using DigitalMusic.Application.Features.UserFeatures.Query.GetById;
 using DigitalMusic.Application.Helper.EnumCollection;
 using DigitalMusic.Application.Helper.Interface;
@@ -48,6 +49,20 @@ namespace DigitalMusic.WebAPI.Controllers
         public async Task<ActionResult<Guid>> Create(CreateAlbumRequest request,
            CancellationToken cancellationToken)
         {
+            var result = await _mediator.Send(request, cancellationToken);
+            return Ok(result);
+        }
+        
+        [HttpPut("id")]
+        public async Task<ActionResult<UpdateAlbumResponse>> Update(Guid id, UpdateAlbumDTO dto,
+            CancellationToken cancellationToken)
+        {
+            var request = new UpdateAlbumRequest(
+                id,
+                dto.Name,
+                dto.Year
+            );
+            
             var result = await _mediator.Send(request, cancellationToken);
             return Ok(result);
         }
