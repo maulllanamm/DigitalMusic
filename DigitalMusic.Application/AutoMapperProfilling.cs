@@ -38,6 +38,8 @@ namespace DigitalMusic.Application
             CreateMap<User, LoginResponse>();
             
             CreateMap<CreateAlbumRequest, Album>();
+            
+            CreateMap<Album, GetByIdAlbumResponse>();
         }
     }
 }

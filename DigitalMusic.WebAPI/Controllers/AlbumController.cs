@@ -1,4 +1,8 @@
+using System.Security.Claims;
+using DigitalMusic.Application.Common.Exceptions;
 using DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum;
+using DigitalMusic.Application.Features.UserFeatures.Query.GetById;
+using DigitalMusic.Application.Helper.EnumCollection;
 using DigitalMusic.Application.Helper.Interface;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +21,13 @@ namespace DigitalMusic.WebAPI.Controllers
             _mediator = mediator;
             _cacheHelper = cacheHelper;
             _httpContextAccessor = httpContextAccessor;
+        }
+        
+        [HttpGet("id")]
+        public async Task<ActionResult<GetByIdAlbumResponse>> GetById(Guid id, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new GetByIdAlbumRequest(id), cancellationToken);
+            return Ok(result);
         }
         
         [HttpPost]
