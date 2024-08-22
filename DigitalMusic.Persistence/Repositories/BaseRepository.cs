@@ -144,6 +144,7 @@ namespace DigitalMusic.Persistence.Repositories
             {
                 try
                 {
+                    entity.modified_date = DateTime.UtcNow;
                     var editedEntity = _context.Set<TEntity>().FirstOrDefault(e => e.id == entity.id && e.is_deleted == false);
 
                     if (editedEntity != null)
