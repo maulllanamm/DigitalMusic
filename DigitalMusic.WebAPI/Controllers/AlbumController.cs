@@ -23,6 +23,20 @@ namespace DigitalMusic.WebAPI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
         
+        [HttpGet]
+        public async Task<ActionResult<List<GetAllAlbumResponse>>> GetAll(CancellationToken cancellationToken)
+        {
+            var cacheData = _cacheHelper.GetData<IEnumerable<GetAllAlbumResponse>>("albums");
+            if (cacheData != null && cacheData.Count() > 0)
+            {
+                return Ok(cacheData);
+            }
+            var result = await _mediator.Send(new GetAllAlbumRequest(), cancellationToken);
+            var expireTime = DateTime.Now.AddMinutes(1);
+            _cacheHelper.SetData<IEnumerable<GetAllAlbumResponse>>("albums", result, expireTime);
+            return Ok(result);
+        }
+        
         [HttpGet("id")]
         public async Task<ActionResult<GetByIdAlbumResponse>> GetById(Guid id, CancellationToken cancellationToken)
         {
