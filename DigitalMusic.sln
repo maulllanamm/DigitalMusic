@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalMusic.WebAPI", "DigitalMusic.WebAPI\DigitalMusic.WebAPI.csproj", "{B1919711-404A-4A19-84D9-8CE22157042D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalMusic.Application", "DigitalMusic.Application\DigitalMusic.Application.csproj", "{30033AF5-F4EF-4B57-8D0C-ED359D58A2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalMusic.Domain", "DigitalMusic.Domain\DigitalMusic.Domain.csproj", "{27D5B337-FE1B-44B2-9AB3-492683D81425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalMusic.Persistence", "DigitalMusic.Persistence\DigitalMusic.Persistence.csproj", "{237BC1F5-EAFE-4E5E-A388-C6746D5B790F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1919711-404A-4A19-84D9-8CE22157042D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1919711-404A-4A19-84D9-8CE22157042D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1919711-404A-4A19-84D9-8CE22157042D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1919711-404A-4A19-84D9-8CE22157042D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30033AF5-F4EF-4B57-8D0C-ED359D58A2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30033AF5-F4EF-4B57-8D0C-ED359D58A2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30033AF5-F4EF-4B57-8D0C-ED359D58A2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30033AF5-F4EF-4B57-8D0C-ED359D58A2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D5B337-FE1B-44B2-9AB3-492683D81425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D5B337-FE1B-44B2-9AB3-492683D81425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D5B337-FE1B-44B2-9AB3-492683D81425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D5B337-FE1B-44B2-9AB3-492683D81425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{237BC1F5-EAFE-4E5E-A388-C6746D5B790F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{237BC1F5-EAFE-4E5E-A388-C6746D5B790F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{237BC1F5-EAFE-4E5E-A388-C6746D5B790F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{237BC1F5-EAFE-4E5E-A388-C6746D5B790F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
