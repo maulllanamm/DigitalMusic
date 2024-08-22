@@ -66,6 +66,14 @@ namespace DigitalMusic.WebAPI.Controllers
             var result = await _mediator.Send(request, cancellationToken);
             return Ok(result);
         }
+        
+        [HttpDelete("id")]
+        public async Task<ActionResult<bool>> Delete(Guid id,
+            CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new DeleteAlbumRequest(id), cancellationToken);
+            return Ok(result);
+        }
 
     }
 }
