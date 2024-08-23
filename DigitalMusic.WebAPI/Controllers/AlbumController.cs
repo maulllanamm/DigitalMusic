@@ -37,7 +37,7 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
         
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<GetByIdAlbumResponse>> GetById(Guid id, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetByIdAlbumRequest(id), cancellationToken);
@@ -52,7 +52,7 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
         
-        [HttpPost("id/covers")]
+        [HttpPost("{id}/covers")]
         public async Task<ActionResult<string>> UploadImage(Guid id, [FromForm] UploadImageDTO dto,
             CancellationToken cancellationToken)
         {
@@ -65,7 +65,7 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
         
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<UpdateAlbumResponse>> Update(Guid id, UpdateAlbumDTO dto,
             CancellationToken cancellationToken)
         {
@@ -79,7 +79,7 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
         
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(Guid id,
             CancellationToken cancellationToken)
         {
