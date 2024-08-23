@@ -23,6 +23,7 @@ namespace DigitalMusic.Application
             services.AddScoped<IVerifyTokenHelper, VerifyTokenHelper>();
             services.AddScoped<IResetPasswordTokenHelper, ResetPasswordTokenHelper>();
             services.AddScoped<ICacheHelper, CacheHelper>();
+            services.AddScoped<IFileUploadHelper, FileUploadHelper>();
         }
     }
 }

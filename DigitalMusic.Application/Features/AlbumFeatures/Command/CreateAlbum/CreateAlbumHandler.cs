@@ -1,12 +1,10 @@
-﻿using System.Security.Claims;
-using AutoMapper;
-using DigitalMusic.Application.Common.Exceptions;
+﻿using AutoMapper;
 using DigitalMusic.Application.Repositories;
 using DigitalMusic.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum
+namespace DigitalMusic.Application.Features.AlbumFeatures.Command.CreateAlbum
 {
     public sealed class CreateAlbumHandler : IRequestHandler<CreateAlbumRequest, Guid>
     {

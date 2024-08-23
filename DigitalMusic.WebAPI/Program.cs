@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +69,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader(); ;
+        });
+});
+
 var app = builder.Build();
 
 // Dapatkan logger untuk program utama
@@ -87,6 +98,16 @@ try
 
     app.UseHttpsRedirection();
 
+    // mapping Uploads folder to Resources folder
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(builder.Environment.WebRootPath,"uploads")),
+        RequestPath = "/Resources"
+    });
+
+    app.UseCors();
+    
     // jika UseAuthentication dibawah UseAuthorization
     // maka meskipun udah login, ketika hit api yang authorize
     // dia bakalan return 401 (unauthorized)

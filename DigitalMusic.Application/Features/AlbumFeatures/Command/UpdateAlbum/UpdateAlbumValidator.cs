@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum
+namespace DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum
 {
     public class UpdateAlbumValidator : AbstractValidator<UpdateAlbumRequest>
     {

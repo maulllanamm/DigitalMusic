@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace DigitalMusic.Application.Features.UserFeatures.Command.UpdateUser
+﻿namespace DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum
 {
     public class UpdateAlbumDTO
     {

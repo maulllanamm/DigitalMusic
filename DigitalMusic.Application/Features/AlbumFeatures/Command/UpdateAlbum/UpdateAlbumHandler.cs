@@ -3,7 +3,7 @@ using DigitalMusic.Application.Repositories;
 using DigitalMusic.Domain.Entities;
 using MediatR;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum
+namespace DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum
 {
     public sealed class UpdateAlbumHandler : IRequestHandler<UpdateAlbumRequest, UpdateAlbumResponse>
     {

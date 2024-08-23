@@ -4,7 +4,7 @@ using DigitalMusic.Application.Repositories;
 using DigitalMusic.Domain.Entities;
 using MediatR;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum
+namespace DigitalMusic.Application.Features.AlbumFeatures.Command.DeleteAlbum
 {
     public sealed class DeleteAlbumHandler : IRequestHandler<DeleteAlbumRequest, bool>
     {

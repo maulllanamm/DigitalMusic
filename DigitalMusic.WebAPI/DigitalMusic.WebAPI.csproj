@@ -32,4 +32,8 @@
     <ProjectReference Include="..\DigitalMusic.Persistence\DigitalMusic.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

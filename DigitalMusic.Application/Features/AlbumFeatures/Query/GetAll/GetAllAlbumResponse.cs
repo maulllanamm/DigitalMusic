@@ -1,6 +1,6 @@
 ﻿using DigitalMusic.Domain.Entities;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Query.GetById
+namespace DigitalMusic.Application.Features.AlbumFeatures.Query.GetById
 {
     public sealed record GetAllAlbumResponse
     {

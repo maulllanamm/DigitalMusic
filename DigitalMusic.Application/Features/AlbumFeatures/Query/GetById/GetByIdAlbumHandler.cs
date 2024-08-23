@@ -3,7 +3,7 @@ using DigitalMusic.Application.Common.Exceptions;
 using DigitalMusic.Application.Repositories;
 using MediatR;
 
-namespace DigitalMusic.Application.Features.UserFeatures.Query.GetById
+namespace DigitalMusic.Application.Features.AlbumFeatures.Query.GetById
 {
     public class GetByIdAlbumHandler : IRequestHandler<GetByIdAlbumRequest, GetByIdAlbumResponse>
     {

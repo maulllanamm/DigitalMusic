@@ -1,9 +1,8 @@
-using System.Security.Claims;
-using DigitalMusic.Application.Common.Exceptions;
-using DigitalMusic.Application.Features.UserFeatures.Command.CreateAlbum;
-using DigitalMusic.Application.Features.UserFeatures.Command.UpdateUser;
-using DigitalMusic.Application.Features.UserFeatures.Query.GetById;
-using DigitalMusic.Application.Helper.EnumCollection;
+using DigitalMusic.Application.Features.AlbumFeatures.Command.CreateAlbum;
+using DigitalMusic.Application.Features.AlbumFeatures.Command.DeleteAlbum;
+using DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum;
+using DigitalMusic.Application.Features.AlbumFeatures.Command.UploadImage;
+using DigitalMusic.Application.Features.AlbumFeatures.Query.GetById;
 using DigitalMusic.Application.Helper.Interface;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +48,19 @@ namespace DigitalMusic.WebAPI.Controllers
         public async Task<ActionResult<Guid>> Create(CreateAlbumRequest request,
            CancellationToken cancellationToken)
         {
+            var result = await _mediator.Send(request, cancellationToken);
+            return Ok(result);
+        }
+        
+        [HttpPost("id/covers")]
+        public async Task<ActionResult<string>> UploadImage(Guid id, [FromForm] UploadImageDTO dto,
+            CancellationToken cancellationToken)
+        {
+            var request = new UploadImageRequest
+            (
+                id,
+                dto.ImageFile
+            );
             var result = await _mediator.Send(request, cancellationToken);
             return Ok(result);
         }
