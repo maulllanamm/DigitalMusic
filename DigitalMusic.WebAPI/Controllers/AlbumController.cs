@@ -1,5 +1,6 @@
 using DigitalMusic.Application.Features.AlbumFeatures.Command.CreateAlbum;
 using DigitalMusic.Application.Features.AlbumFeatures.Command.DeleteAlbum;
+using DigitalMusic.Application.Features.AlbumFeatures.Command.DeleteImage;
 using DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum;
 using DigitalMusic.Application.Features.AlbumFeatures.Command.UploadImage;
 using DigitalMusic.Application.Features.AlbumFeatures.Query.GetById;
@@ -87,5 +88,14 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{id}/covers")]
+        public async Task<ActionResult<bool>> DeleteCover(Guid id,
+            CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new DeleteImageRequest(id), cancellationToken);
+            return Ok(result);
+        }
+
+        
     }
 }

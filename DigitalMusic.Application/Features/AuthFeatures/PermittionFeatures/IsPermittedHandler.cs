@@ -19,6 +19,7 @@ namespace DigitalMusic.Application.Features.AuthFeatures.PermittionFeatures
         public async Task<bool> Handle(IsPermittedRequest request, CancellationToken cancellationToken)
         {
             var role = request.HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
+            var path = request.HttpContext.Request.Path.Value;
             var method = request.HttpContext.Request.Method.ToString();
             var isPermitted = false;
 
@@ -29,7 +30,7 @@ namespace DigitalMusic.Application.Features.AuthFeatures.PermittionFeatures
             }   
 
 
-            isPermitted = request.role.role_permissions.Any(p => p.permission.http_method == method);
+            isPermitted = request.role.role_permissions.Any(p => p.permission.path.Contains(path) && p.permission.http_method == method);
             if (isPermitted)
             {
                 return isPermitted;
