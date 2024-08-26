@@ -41,7 +41,7 @@ namespace DigitalMusic.WebAPI.Controllers
             return Ok(result);
         }
         [Authorize]
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<GetByIdUserResponse>> GetById(Guid id, CancellationToken cancellationToken)
         {
             var claimId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Sid)?.Value;
@@ -55,7 +55,7 @@ namespace DigitalMusic.WebAPI.Controllers
         }
         
         [Authorize]
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<UpdateUserResponse>> Update(Guid id, UpdateUserRequestDTO dto,
            CancellationToken cancellationToken)
         {
@@ -80,7 +80,7 @@ namespace DigitalMusic.WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<DeleteUserRequest>> Delete(Guid id,
            CancellationToken cancellationToken)
         {

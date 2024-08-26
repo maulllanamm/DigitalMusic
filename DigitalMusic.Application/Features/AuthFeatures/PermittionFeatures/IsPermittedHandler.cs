@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using DigitalMusic.Application.Helper.EnumCollection;
 
 namespace DigitalMusic.Application.Features.AuthFeatures.PermittionFeatures
@@ -18,7 +19,6 @@ namespace DigitalMusic.Application.Features.AuthFeatures.PermittionFeatures
         public async Task<bool> Handle(IsPermittedRequest request, CancellationToken cancellationToken)
         {
             var role = request.HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
-            var path = request.HttpContext.Request.Path.Value;
             var method = request.HttpContext.Request.Method.ToString();
             var isPermitted = false;
 
@@ -26,19 +26,13 @@ namespace DigitalMusic.Application.Features.AuthFeatures.PermittionFeatures
             if (role == UserRole.Administrator || role is null)
             {
                 return true;
-            }
+            }   
 
-            foreach (var rolePermission in request.role.role_permissions)
+
+            isPermitted = request.role.role_permissions.Any(p => p.permission.http_method == method);
+            if (isPermitted)
             {
-                if (path == rolePermission.permission.path && method == rolePermission.permission.http_method)
-                {
-                    isPermitted = true;
-                    return isPermitted;
-                }
-                else
-                {
-                    isPermitted = false;
-                }
+                return isPermitted;
             }
 
             return isPermitted;
