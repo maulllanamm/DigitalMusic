@@ -1,4 +1,5 @@
 ﻿using DigitalMusic.Application.Features.SongFeatures.Command.CreateAlbum;
+using DigitalMusic.Application.Features.SongFeatures.Command.UpdateSong;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetAll;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetById;
 using DigitalMusic.Application.Helper.Interface;
@@ -6,7 +7,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalMusic.WebAPI.Controllers;
-
 
 [ApiController]
 [Route("songs")]
@@ -31,6 +31,7 @@ public class SongController : ControllerBase
         {
             return Ok(cacheData);
         }
+
         var result = await _mediator.Send(new GetAllSongRequest(), cancellationToken);
         var expireTime = DateTime.Now.AddMinutes(1);
         _cacheHelper.SetData<IEnumerable<GetAllSongResponse>>("Songs", result, expireTime);
@@ -43,8 +44,8 @@ public class SongController : ControllerBase
         var result = await _mediator.Send(new GetByIdSongRequest(id), cancellationToken);
         return Ok(result);
     }
-    
-    
+
+
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(CreateSongRequest request,
         CancellationToken cancellationToken)
@@ -52,5 +53,22 @@ public class SongController : ControllerBase
         var result = await _mediator.Send(request, cancellationToken);
         return Ok(result);
     }
-    
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<UpdateSongResponse>> Update(Guid id, UpdateSongDTO dto,
+        CancellationToken cancellationToken)
+    {
+        var request = new UpdateSongRequest(
+            id,
+            dto.Title,
+            dto.Year,
+            dto.Performer,
+            dto.Genre,
+            dto.Duration,
+            dto.AlbumId
+        );
+
+        var result = await _mediator.Send(request, cancellationToken);
+        return Ok(result);
+    }
 }
