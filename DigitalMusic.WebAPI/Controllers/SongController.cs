@@ -1,5 +1,6 @@
 ﻿using DigitalMusic.Application.Features.SongFeatures.Command.CreateAlbum;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetAll;
+using DigitalMusic.Application.Features.SongFeatures.Query.GetById;
 using DigitalMusic.Application.Helper.Interface;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,13 @@ public class SongController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<GetByIdSongResponse>> GetById(Guid id, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetByIdSongRequest(id), cancellationToken);
+        return Ok(result);
+    }
+    
     
     [HttpPost]
     public async Task<ActionResult<Guid>> Create(CreateSongRequest request,
