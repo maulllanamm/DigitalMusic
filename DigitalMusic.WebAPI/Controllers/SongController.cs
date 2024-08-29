@@ -1,4 +1,5 @@
 ﻿using DigitalMusic.Application.Features.SongFeatures.Command.CreateAlbum;
+using DigitalMusic.Application.Features.SongFeatures.Command.DeleteSong;
 using DigitalMusic.Application.Features.SongFeatures.Command.UpdateSong;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetAll;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetById;
@@ -69,6 +70,14 @@ public class SongController : ControllerBase
         );
 
         var result = await _mediator.Send(request, cancellationToken);
+        return Ok(result);
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<bool>> Delete(Guid id,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new DeleteSongRequest(id), cancellationToken);
         return Ok(result);
     }
 }
