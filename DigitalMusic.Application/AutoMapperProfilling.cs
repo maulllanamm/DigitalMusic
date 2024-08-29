@@ -4,6 +4,7 @@ using DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum;
 using DigitalMusic.Application.Features.AlbumFeatures.Query.GetById;
 using DigitalMusic.Application.Features.AuthFeatures.LoginFeatures;
 using DigitalMusic.Application.Features.AuthFeatures.RegisterFeatures;
+using DigitalMusic.Application.Features.SongFeatures.Command.CreateAlbum;
 using DigitalMusic.Application.Features.UserFeatures.Command.UpdateUser;
 using DigitalMusic.Application.Features.UserFeatures.Query.GetAll;
 using DigitalMusic.Application.Features.UserFeatures.Query.GetById;
@@ -48,7 +49,7 @@ namespace DigitalMusic.Application
             CreateMap<UpdateAlbumRequest, Album>();
             CreateMap<Album, UpdateAlbumResponse>();
             
-            
+            CreateMap<CreateSongRequest, Song>();
         }
     }
 }

@@ -9,5 +9,6 @@ namespace DigitalMusic.Domain.Entities
         public string name { get; set; }
         public int year { get; set; }
         public string? cover { get; set; }
+        public ICollection<Song> Songs { get; set; }
     }
 }
