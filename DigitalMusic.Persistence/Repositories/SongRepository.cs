@@ -10,5 +10,11 @@ namespace DigitalMusic.Persistence.Repositories
         public SongRepository(DataContext context) : base(context)
         {
         }
+        
+        public async Task<List<Song>> GetAll()
+        {
+            return await _context.Set<Song>().Where(x => x.is_deleted == false)
+                .ToListAsync();
+        }
     }
 }
