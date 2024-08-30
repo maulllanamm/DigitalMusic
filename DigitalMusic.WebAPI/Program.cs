@@ -69,6 +69,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Administrator"));
+    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+});
+
 // CORS
 builder.Services.AddCors(options =>
 {
@@ -126,7 +132,6 @@ try
     // Middleware autorisasi
     app.UseAuthorization();
 
-    app.UseMiddleware<PermisionMiddleware>();
     app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 
     app.MapControllers();

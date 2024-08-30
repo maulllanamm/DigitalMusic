@@ -26,7 +26,7 @@ namespace DigitalMusic.WebAPI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [Authorize]
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet]
         public async Task<ActionResult<GetAllUserResponse>> GetAll(CancellationToken cancellationToken)
         {
@@ -40,6 +40,7 @@ namespace DigitalMusic.WebAPI.Controllers
             _cacheHelper.SetData<IEnumerable<GetAllUserResponse>>("users", result, expireTime);
             return Ok(result);
         }
+        
         [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<GetByIdUserResponse>> GetById(Guid id, CancellationToken cancellationToken)
