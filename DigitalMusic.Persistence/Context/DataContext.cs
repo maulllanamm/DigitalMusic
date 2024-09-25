@@ -13,6 +13,7 @@ namespace DigitalMusic.Persistence.Context
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +24,7 @@ namespace DigitalMusic.Persistence.Context
             modelBuilder.Entity<RolePermission>().ToTable("role_permissions");
             modelBuilder.Entity<Album>().ToTable("albums");
             modelBuilder.Entity<Song>().ToTable("songs");
+            modelBuilder.Entity<Playlist>().ToTable("playlists");
 
             modelBuilder.Entity<RolePermission>()
             .HasKey(rp => new { rp.role_id, rp.permission_id });
@@ -46,9 +48,14 @@ namespace DigitalMusic.Persistence.Context
                 .HasOne(a => a.album)
                 .WithMany(s => s.Songs)
                 .HasForeignKey(fr => fr.album_id);
+            
+            modelBuilder.Entity<Playlist>()
+                .HasOne(u => u.user)
+                .WithMany(u => u.Playlists)
+                .HasForeignKey(p => p.user_id);
 
             // Daftar entitas yang ingin dikonfigurasi
-            var entities = new[] { typeof(User),typeof(Album),typeof(Song)};
+            var entities = new[] { typeof(User),typeof(Album),typeof(Song),typeof(Playlist)};
             foreach (var entity in entities)
             {
                 modelBuilder.Entity(entity)

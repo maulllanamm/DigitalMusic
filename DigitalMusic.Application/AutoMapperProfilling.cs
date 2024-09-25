@@ -5,6 +5,10 @@ using DigitalMusic.Application.Features.AlbumFeatures.Command.UpdateAlbum;
 using DigitalMusic.Application.Features.AlbumFeatures.Query.GetById;
 using DigitalMusic.Application.Features.AuthFeatures.LoginFeatures;
 using DigitalMusic.Application.Features.AuthFeatures.RegisterFeatures;
+using DigitalMusic.Application.Features.PlaylistFeatures.Command.CreatePlaylist;
+using DigitalMusic.Application.Features.PlaylistFeatures.Command.UpdatePlaylist;
+using DigitalMusic.Application.Features.PlaylistFeatures.Query.GetAll;
+using DigitalMusic.Application.Features.PlaylistFeatures.Query.GetById;
 using DigitalMusic.Application.Features.SongFeatures.Command.CreateAlbum;
 using DigitalMusic.Application.Features.SongFeatures.Command.UpdateSong;
 using DigitalMusic.Application.Features.SongFeatures.Query.GetAll;
@@ -66,7 +70,15 @@ namespace DigitalMusic.Application
             CreateMap<Song, UpdateSongResponse>()
                 .ForMember(dest => dest.AlbumId, opt => opt.MapFrom(src => src.album_id));
             
-           
+            CreateMap<CreatePlaylistRequest, Playlist>();
+
+            CreateMap<Playlist, GetAllPlaylistResponse>();
+
+            CreateMap<Playlist, GetByIdPlaylistResponse>();
+
+            CreateMap<UpdatePlaylistRequest, Playlist>();
+
+            CreateMap<Playlist, UpdatePlaylistResponse>();
         }
     }
 }

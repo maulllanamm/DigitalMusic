@@ -18,6 +18,7 @@ namespace DigitalMusic.Persistence
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAlbumRepository, AlbumRepository>();
             services.AddScoped<ISongRepository, SongRepository>();
+            services.AddScoped<IPlaylistRepository, PlaylistRepository>();
         }
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DigitalMusic.Persistence.Repositories
 {
-    public class SongRepository : BaseGuidRepository<Song>, ISongRepository
+    public class PlaylistRepository : BaseGuidRepository<Playlist>, IPlaylistRepository
     {
-        public SongRepository(DataContext context) : base(context)
+        public PlaylistRepository(DataContext context) : base(context)
         {
         }
     }

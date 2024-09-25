@@ -24,5 +24,6 @@ namespace DigitalMusic.Domain.Entities
         public DateTimeOffset? verify_date { get; set; }
         public string? password_reset_token { get; set; }
         public DateTimeOffset? password_reset_expires { get; set; }
+        public ICollection<Playlist> Playlists { get; set; }
     }
 }
